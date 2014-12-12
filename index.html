@@ -17,42 +17,35 @@
     position: absolute;
   }
 
-  #container {
-    margin: 0 auto;
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
-  }
-
-  #video {
-    width: 100%;
-    background-color: black;
-    overflow: hidden;
+  video {
+    margin: auto;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
   }
 </style>
 </head>
 
 <body>
-<div id="container">
-  <video autoplay="true" id="video"></video>
-</div>
-<script>
-  var video = document.querySelector("#video");
+  <video autoplay="true"></video>
+  <script>
+    var video = document.querySelector("video");
 
-  navigator.getUserMedia =
-      navigator.getUserMedia || navigator.webkitGetUserMedia ||
-      navigator.mozGetUserMedia || navigator.msGetUserMedia || navigator.oGetUserMedia;
+    navigator.getUserMedia =
+        navigator.getUserMedia || navigator.webkitGetUserMedia ||
+        navigator.mozGetUserMedia || navigator.msGetUserMedia || navigator.oGetUserMedia;
 
-  if (navigator.getUserMedia) {
-    navigator.getUserMedia({video: true}, handleVideo, videoError);
-  }
+    if (navigator.getUserMedia) {
+      navigator.getUserMedia({video: true}, handleVideo, videoError);
+    }
 
-  function handleVideo(stream) {
-    video.src = window.URL.createObjectURL(stream);
-  }
+    function handleVideo(stream) {
+      video.src = window.URL.createObjectURL(stream);
+    }
 
-  function videoError(e) {
-  }
-</script>
+    function videoError(e) {
+    }
+  </script>
 </body>
 </html>
